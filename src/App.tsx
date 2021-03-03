@@ -5,12 +5,11 @@ import {
   Route,
 } from "react-router-dom";
 
-
 import Characters from './views/Characters'
-import Episodes from './views/Episodes';
-import Locations from './views/Locations';
 
+import Locations from './views/Locations'
 
+import Episodes from './views/Episodes'
 
 function App() {
   return (
@@ -29,8 +28,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-  )
+  );
 }
-
 
 export default App;

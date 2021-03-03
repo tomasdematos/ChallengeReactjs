@@ -2,14 +2,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        appBar: {
-            position: 'relative',
-            backgroundColor: '#48a51d',
-        },
-        title: {
-            marginLeft: theme.spacing(2),
-            flex: 1,
-        },
         button: {
             height: 255,
         },

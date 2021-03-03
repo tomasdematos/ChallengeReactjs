@@ -6,34 +6,34 @@ import {
     Box,
     CircularProgress
 } from '@material-ui/core';
-import Pagination from '@material-ui/lab/Pagination';
+import Pagination from '@material-ui/lab/Pagination'
 
-import useStyles from './styles'
+import useStyles from '../styles'
 
-import Header from '../components/Header'
-import Cards from '../components/Cards'
+import UiContainer from '../../components/UiContainer'
+import Cards from '../../components/Cards'
 
-import { EPISODES } from '../querys'
+import { LOCATIONS } from '../../querys'
 
-export interface EpisodesProps {
+
+export interface Props {
 
 }
 
-const Episodes: React.SFC<EpisodesProps> = () => {
+const Locations: React.SFC<Props> = () => {
 
     const [page, setPage] = useState<number>(1);
     const [filterType, setFilterType] = useState<string>("name")
-    const [filter, setFilter] = useState<string>("");
+    const [filter, setFilter] = useState<string>("")
+
+
+    const { loading, error, data } = useQuery(LOCATIONS(page, filterType, filter));
 
     const classes = useStyles();
-    console.log(page, filterType, filter);
-
-    const { loading, error, data } = useQuery(EPISODES(page, filterType, filter));
-
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0)
     };
 
     if (loading) {
@@ -41,16 +41,14 @@ const Episodes: React.SFC<EpisodesProps> = () => {
             <div  >
                 <Box className={classes.content} display="flex"  >
 
-                    <Header
+                    <UiContainer
                         setFilter={setFilter}
                         filter={filter}
                         setFilterType={setFilterType}
                         setPage={setPage}
                     />
-                    <Box className={classes.root} >
-
-
-                        <h1 style={{ backgroundColor: "#b2ce33", textAlign: "center", alignSelf: "center" }}>
+                    <Box className={classes.loadingContainer} >
+                        <h1 className={classes.loading}>
                             <CircularProgress />
                         </h1>
 
@@ -59,12 +57,11 @@ const Episodes: React.SFC<EpisodesProps> = () => {
             </div >
         );
     }
-
     if (!error) {
         return (
             <div >
                 <Box className={classes.content} display="flex"  >
-                    <Header
+                    <UiContainer
                         setFilter={setFilter}
                         filter={filter}
                         setFilterType={setFilterType}
@@ -81,28 +78,34 @@ const Episodes: React.SFC<EpisodesProps> = () => {
                             <Cards
                                 data={data}
                             />
-
                         </Grid>
+
                         <Box display="flex" justifyContent="center">
-                            <Pagination count={data.episodes.info.pages}
+                            <Pagination count={data.locations.info.pages}
                                 size="large"
                                 color="primary"
                                 className={classes.paginator}
                                 page={page}
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                siblingCount={5}
+                                boundaryCount={2}
+                                showFirstButton
+                                showLastButton />
+
                         </Box>
-
                     </Box>
-
                 </Box >
             </div >
+
         );
+
+
     } else {
         return (
             <div  >
                 <Box className={classes.content} display="flex"  >
 
-                    <Header
+                    <UiContainer
                         setFilter={setFilter}
                         filter={filter}
                         setFilterType={setFilterType}
@@ -111,7 +114,7 @@ const Episodes: React.SFC<EpisodesProps> = () => {
                     <Box className={classes.root} >
 
 
-                        <h1 style={{ backgroundColor: "#ce3333", textAlign: "center", alignSelf: "center" }}>
+                        <h1 className={classes.error}>
                             {error.message}
                         </h1>
 
@@ -123,4 +126,5 @@ const Episodes: React.SFC<EpisodesProps> = () => {
 }
 
 
-export default Episodes;
+
+export default Locations;

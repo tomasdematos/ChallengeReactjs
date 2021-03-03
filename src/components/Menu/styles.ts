@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(0, 1),
             // necessary for content to be below app bar
             ...theme.mixins.toolbar,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
         },
         flabel: {
             fontSize: 30,
@@ -32,6 +32,23 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingTop: 10,
             paddingLeft: 10,
         },
+        link1: {
+            fontSize: 20,
+            color: "#2b2b2bc",
+            textDecoration: 'none'
+        },
+        link2: {
+            fontSize: 20,
+            color: "#2b2b2bc",
+            textDecoration: 'none',
+            marginLeft: 10
+        },
+        link3: {
+            fontSize: 20,
+            color: "#2b2b2bc",
+            textDecoration: 'none',
+            marginLeft: 20
+        }
     })
 );
 

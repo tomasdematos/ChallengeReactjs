@@ -22,7 +22,11 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         height: "100%"
     },
-
+    error: {
+        backgroundColor: "#ce3333",
+        textAlign: "center",
+        alignSelf: "center"
+    },
 
     paginator: {
         alignSelf: "center",
@@ -30,7 +34,20 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 20,
         backgroundColor: "#48a51d"
 
+    },
+
+    loading: {
+        backgroundColor: "#b2ce33",
+        textAlign: 'center',
+        paddingTop: 10
+    },
+
+    loadingContainer: {
+        width: '100%',
+
+
     }
+
 
 }));
 

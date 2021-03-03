@@ -14,7 +14,7 @@ import useStyles from './styles';
 
 import { Link } from 'react-router-dom'
 
-export interface MenuProps {
+export interface Props {
     open: boolean,
 
 
@@ -24,14 +24,10 @@ export interface MenuProps {
 
 
 
-const Menu: React.SFC<MenuProps> = ({ open, setOpen }) => {
+const Menu: React.SFC<Props> = ({ open, setOpen }) => {
 
     const classes = useStyles();
     const theme = useTheme();
-
-
-
-
 
     const handleDrawerClose = () => {
         setOpen(false);
@@ -56,18 +52,15 @@ const Menu: React.SFC<MenuProps> = ({ open, setOpen }) => {
             <div className={classes.form}>
                 <h1>Filters</h1>
 
-                <Link style={{ fontSize: 20, color: "#2b2b2bc", textDecoration: 'none' }} to="/">Characters</Link>
+                <Link className={classes.link1} to="/">Characters</Link>
                 <br />
-                <Link style={{ fontSize: 20, color: "#2b2b2bc", textDecoration: 'none', marginLeft: 10 }} to="/Locations">Locations</Link>
+                <Link className={classes.link2} to="/Locations">Locations</Link>
                 <br />
-                <Link style={{ fontSize: 20, color: "#2b2b2bc", textDecoration: 'none', marginLeft: 20 }} to="/Episodes">Episodes</Link>
+                <Link className={classes.link3} to="/Episodes">Episodes</Link>
                 <br />
 
             </div>
-
         </Drawer>
-
-
     );
 }
 export default Menu;
